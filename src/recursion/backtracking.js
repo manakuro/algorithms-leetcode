@@ -1,13 +1,45 @@
 /**
  * Backtracking approach
  *
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+const permute = function (nums) {
+  let result = []
+
+  if (nums.length === 1) return [[...nums]]
+
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums.shift()
+
+    const perms = permute(nums)
+
+    // e.g. num = 1
+    // perms = [3, 2], [2, 3]
+    // perms.push(1)
+    for (const perm of perms) {
+      perm.push(num)
+    }
+
+    result = result.concat(perms)
+    nums.push(num)
+  }
+
+  return result
+}
+
+console.log(permute([1, 2, 3])) // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+/**
+ * Backtracking approach
+ *
  * Given an array nums of distinct integers, return all the possible permutations.
  * You can return the answer in any order.
  *
  * @param nums {number[]}
  * @return {number[][]}
  */
-const permute = (nums) => {
+const permuteAll = (nums) => {
   const result = []
   const max = nums.length
 
@@ -35,4 +67,4 @@ const permute = (nums) => {
   return result
 }
 
-console.log(permute([1, 2, 3]))
+console.log(permuteAll([1, 2, 3])) // [1,1,1], [1,1,2] [1,1,3] ...
