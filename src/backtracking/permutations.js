@@ -68,3 +68,40 @@ const permuteAll = (nums) => {
 }
 
 console.log(permuteAll([1, 2, 3])) // [1,1,1], [1,1,2] [1,1,3] ...
+
+/**
+ *
+ * @param {string} letters
+ * @return {string[]}
+ */
+function permutations(letters) {
+  const result = []
+
+  /**
+   *
+   * @param {number} startIndex
+   * @param {string[]} current
+   * @param {{ [k: number]: boolean }} visited
+   */
+  const dfs = (startIndex, current, visited) => {
+    if (startIndex === letters.length) {
+      result.push(current.join(''))
+      return
+    }
+
+    for (let i = 0; i < letters.length; i++) {
+      if (visited[i]) continue
+
+      current.push(letters[i])
+      visited[i] = true
+      dfs(startIndex + 1, current, visited)
+      current.pop()
+      visited[i] = false
+    }
+  }
+
+  dfs(0, [], {})
+
+  return result
+}
+console.log(permutations('abc')) // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
