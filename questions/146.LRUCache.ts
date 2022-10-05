@@ -21,18 +21,18 @@ class LRUCache {
   /**
    * Least recently used node (LRU)
    */
-  left: LRUCacheNode = new LRUCacheNode(0, 0)
+  head: LRUCacheNode = new LRUCacheNode(0, 0)
 
   /**
    * Most recent node
    */
-  right: LRUCacheNode = new LRUCacheNode(0, 0)
+  tail: LRUCacheNode = new LRUCacheNode(0, 0)
 
   constructor(capacity: number) {
     this.capacity = capacity
 
-    this.left.next = this.right
-    this.right.prev = this.left
+    this.head.next = this.tail
+    this.tail.prev = this.head
   }
 
   /**
@@ -41,6 +41,14 @@ class LRUCache {
    * @param node
    * @private
    */
+  // e.g.
+  // 1. node1
+  // head -> node1 -> tail
+  // head -> tail
+  //
+  // 2. node2
+  // head -> node1 -> node2 -> tail
+  // head -> node1 -> tail
   private remove(node: LRUCacheNode): void {
     const prev = node.prev
     const next = node.next
@@ -55,13 +63,19 @@ class LRUCache {
    * @param node
    * @private
    */
+  // e.g.
+  // 1. node1
+  // head -> node1 -> tail
+  //
+  // 2. node2
+  // head -> node1 -> node2 -> tail
   private insert(node: LRUCacheNode): void {
-    const prev = this.right.prev!
-    const next = this.right
+    const prev = this.tail.prev!
+    const tail = this.tail
 
     prev.next = node
-    next.prev = node
-    node.next = next
+    tail.prev = node
+    node.next = tail
     node.prev = prev
   }
 
@@ -83,7 +97,7 @@ class LRUCache {
 
     if (this.cache.size > this.capacity) {
       // remove from the list and delete the LRU from the cache
-      const lru = this.left.next!
+      const lru = this.head.next!
       this.remove(lru)
       this.cache.delete(lru.key)
     }
