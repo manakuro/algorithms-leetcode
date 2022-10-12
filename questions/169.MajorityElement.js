@@ -1,5 +1,5 @@
 /**
- * majorityElement
+ * majorityElement - Boyer Moore Algorithm
  *
  * Time complexity  O(n)
  * Space complexity O(1)
