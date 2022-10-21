@@ -8,7 +8,10 @@ const maxArea = function (height) {
   let right = height.length - 1
 
   while (left < right) {
-    const area = (right - left) * Math.min(height[left], height[right])
+    const w = right - left
+    const h = Math.min(height[left], height[right])
+
+    const area = w * h
     result = Math.max(result, area)
 
     if (height[left] < height[right]) {
