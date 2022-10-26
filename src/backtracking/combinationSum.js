@@ -34,3 +34,34 @@ function combinationSum(candidates, target) {
 }
 
 console.log(combinationSum([2, 3, 5], 8)) // [ [ 2, 2, 2, 2 ], [ 2, 3, 3 ], [ 3, 5 ] ]
+
+/**
+ *
+ * @param {number[]} candidates
+ * @param {number} target
+ * @return {(number[])[]}
+ */
+function combinationSum2(candidates, target) {
+  const result = []
+  const dfs = (startIndex, path, sum) => {
+    if (sum === target) {
+      result.push([...path])
+      return
+    }
+
+    for (let i = startIndex; i < candidates.length; i++) {
+      const candidate = candidates[i]
+      if (sum + candidate > target) continue
+
+      path.push(candidate)
+      dfs(i, path, sum + candidate)
+      path.pop()
+    }
+  }
+
+  dfs(0, [], 0)
+
+  return result
+}
+
+console.log(combinationSum2([2, 3, 6, 7], 7))
