@@ -20,24 +20,14 @@ function coinChange(coins, amount) {
  * @return {number}
  */
 const minCoins = (coins, amount, sum, memo) => {
-  if (sum === amount) {
-    return 0
-  }
-
-  if (sum > amount) {
-    return Infinity
-  }
-
-  if (memo[sum] !== -1) {
-    return memo[sum]
-  }
+  if (sum === amount) return 0
+  if (sum > amount) return Infinity
+  if (memo[sum] !== -1) return memo[sum]
 
   let result = Infinity
   for (const coin of coins) {
     let total = minCoins(coins, amount, sum + coin, memo)
-    if (total === Infinity) {
-      continue
-    }
+    if (total === Infinity) continue
 
     result = Math.min(result, total + 1)
   }
