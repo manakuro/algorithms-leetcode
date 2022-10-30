@@ -16,7 +16,10 @@ const isValidBST = function (root) {
     if (!(node.val > left && node.val < right)) return false
 
     return (
+      // e.g. root = 5
+      // -∞ < 3 < 5
       traverse(node.left, left, node.val) &&
+      // 5 < 8 < ∞
       traverse(node.right, node.val, right)
     )
   }
