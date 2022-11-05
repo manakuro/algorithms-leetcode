@@ -12,6 +12,9 @@ const permute = function (nums) {
 
     const perms = permute(nums)
 
+    // e.g. num = 1
+    // perms = [3, 2], [2, 3]
+    // perms.push(1)
     for (const perm of perms) {
       perm.push(num)
     }
