@@ -17,6 +17,10 @@ const merge = function (intervals) {
 
     // If the last value is overlapping with the corresponding interval,
     // merge the last values.
+    // e.g. result = [1,3], interval = [2,6]
+    // isOverlapping = 2 <= 3
+    // max = Math.max(3, 6)
+    // result = [1,6]
     if (isOverlapping) {
       result[result.length - 1][1] = Math.max(lastEnd, end)
     } else {
