@@ -46,3 +46,48 @@ const wordBreak = function (s, wordDict) {
 }
 
 console.log(wordBreak('leetcode', ['leet', 'code']))
+
+/**
+ * wordBreak - Backtracking
+ *
+ * Time: O(N ^ 2)
+ * Space: O(N)
+
+ * @param {string} s
+ * @param {string[]} wordDict
+ * @return {boolean}
+ */
+const wordBreakBacktracking = function (s, wordDict) {
+  /**
+   * @type {Map<number, boolean>}
+   */
+  const map = new Map()
+
+  /**
+   * @param i {number}
+   * @return {boolean}
+   */
+  const traverse = (i) => {
+    if (map.has(i)) return map.get(i)
+    if (i > s.length - 1) return true
+
+    let isMatched = false
+    for (const word of wordDict) {
+      const length = word.length
+      if (s.slice(i, i + length) === word) {
+        const nextMatched = traverse(i + length)
+        if (nextMatched) {
+          isMatched = true
+          break
+        }
+      }
+    }
+
+    map.set(i, isMatched)
+    return isMatched
+  }
+
+  return traverse(0)
+}
+
+console.log(wordBreakBacktracking('leetcode', ['leet', 'code']))
