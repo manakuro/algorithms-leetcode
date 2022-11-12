@@ -10,18 +10,19 @@ const spiralOrder = function (matrix) {
   let bottom = matrix.length
 
   while (left < right && top < bottom) {
-    // top row
+    // right to left in top row
     for (let i = left; i < right; i++) {
       result.push(matrix[top][i])
     }
     top++
 
-    // right column
+    // top to bottom in right column
     for (let i = top; i < bottom; i++) {
       result.push(matrix[i][right - 1])
     }
     right--
 
+    // break if it reaches to the end
     if (!(left < right && top < bottom)) break
 
     // right to left in bottom row
