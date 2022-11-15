@@ -1,2 +1,2 @@
-# algorithm_javascript
-Algorithm JavaScript
+# Algorithms
+Algorithms and LeetCode solutions in JavaScript and Go.
