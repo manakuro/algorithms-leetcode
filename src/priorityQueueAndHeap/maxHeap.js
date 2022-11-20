@@ -5,7 +5,7 @@ export class HeapItem {
   }
 }
 
-export class MinHeap {
+export class MaxHeap {
   constructor() {
     this.heap = []
   }
@@ -27,7 +27,7 @@ export class MinHeap {
       const parentIndex = Math.floor((index - 1) / 2)
       const parent = this.heap[parentIndex]
 
-      if (parent?.priority <= element?.priority) break
+      if (parent?.priority >= element?.priority) break
       this.heap[index] = parent
       this.heap[parentIndex] = element
       index = parentIndex
@@ -43,12 +43,12 @@ export class MinHeap {
       const right = left + 1
       if (
         (left < length &&
-          this.heap[left]?.priority < this.heap[min]?.priority) ||
-        (right < length && this.heap[right].priority < this.heap[min].priority)
+          this.heap[left]?.priority > this.heap[min]?.priority) ||
+        (right < length && this.heap[right].priority > this.heap[min].priority)
       ) {
         if (right < length) {
           min =
-            this.heap[left].priority < this.heap[right].priority ? left : right
+            this.heap[left].priority > this.heap[right].priority ? left : right
         } else {
           min = left
         }
@@ -73,10 +73,3 @@ export class MinHeap {
     return this.heap.length
   }
 }
-
-const heap = new MinHeap()
-heap.push(new HeapItem(1, 10))
-heap.push(new HeapItem(1, 1))
-heap.push(new HeapItem(1, 2))
-
-console.log(heap.pop())
