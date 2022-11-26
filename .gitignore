@@ -32,6 +32,7 @@ yarn-error.log*
 
 # Editor
 .idea
+.fleet
 
 # yarn (using Zero-Installs)
 .yarn/*
