@@ -1,12 +1,7 @@
 package questions
 
-type ListNode21 struct {
-	Val  int
-	Next *ListNode21
-}
-
-func mergeTwoLists(list1 *ListNode21, list2 *ListNode21) *ListNode21 {
-	head := &ListNode21{}
+func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+	head := &ListNode{}
 	current := head
 
 	for list1 != nil && list2 != nil {
