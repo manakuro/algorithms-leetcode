@@ -1,12 +1,6 @@
 package questions
 
-type TreeNode235 struct {
-	Val   int
-	Left  *TreeNode235
-	Right *TreeNode235
-}
-
-func lowestCommonAncestor(root, p, q *TreeNode235) *TreeNode235 {
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	current := root
 
 	for current != nil {
@@ -22,16 +16,16 @@ func lowestCommonAncestor(root, p, q *TreeNode235) *TreeNode235 {
 	return root
 }
 
-//tree := &TreeNode235{Val: 6}
-//tree.Left = &TreeNode235{Val: 2}
-//tree.Left.Left = &TreeNode235{Val: 0}
-//tree.Left.Right = &TreeNode235{Val: 4}
-//tree.Left.Right.Left = &TreeNode235{Val: 3}
-//tree.Left.Right.Right = &TreeNode235{Val: 5}
+//tree := &TreeNode{Val: 6}
+//tree.Left = &TreeNode{Val: 2}
+//tree.Left.Left = &TreeNode{Val: 0}
+//tree.Left.Right = &TreeNode{Val: 4}
+//tree.Left.Right.Left = &TreeNode{Val: 3}
+//tree.Left.Right.Right = &TreeNode{Val: 5}
 //
-//tree.Right = &TreeNode235{Val: 8}
-//tree.Right.Left = &TreeNode235{Val: 7}
-//tree.Right.Right = &TreeNode235{Val: 9}
+//tree.Right = &TreeNode{Val: 8}
+//tree.Right.Left = &TreeNode{Val: 7}
+//tree.Right.Right = &TreeNode{Val: 9}
 //
 //
 //result := lowestCommonAncestor(tree, tree.Left, tree.Right)
