@@ -39,7 +39,3 @@ func addBinary(a string, b string) string {
 
 	return result
 }
-
-//result := addBinary("11", "1")
-//
-//fmt.Printf("%+v", result)
