@@ -1,12 +1,6 @@
 package questions
 
-type TreeNode226 struct {
-	Val   int
-	Left  *TreeNode226
-	Right *TreeNode226
-}
-
-func invertTree(root *TreeNode226) *TreeNode226 {
+func invertTree(root *TreeNode) *TreeNode {
 	if root == nil {
 		return nil
 	}
