@@ -47,6 +47,6 @@ class Trie {
 
 const obj = new Trie()
 obj.insert('apple')
-obj.search('apple')
-obj.search('app')
-obj.startsWith('app')
+obj.search('apple') // true
+obj.search('app') // false
+obj.startsWith('app') // true
