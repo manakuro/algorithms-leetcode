@@ -17,6 +17,15 @@ class TreeNode {
 function lowestCommonAncestorBinarySearchTree(root, p, q) {
   let current = root
   while (current) {
+    // current.val = 6
+    // p = 0, q = 4
+    //       6
+    //      / \
+    //     2   8
+    //    / \   \
+    //   0   4   9
+    //
+    // 6 > 0 && 6 > 4 then search left tree
     if (current.val > p.val && current.val > q.val) {
       current = current.left
     } else if (current.val < p.val && current.val < q.val) {
