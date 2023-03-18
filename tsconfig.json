@@ -18,6 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
