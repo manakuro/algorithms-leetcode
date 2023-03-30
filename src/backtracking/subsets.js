@@ -26,3 +26,22 @@ const subsets = function (nums) {
   return result
 }
 console.log(subsets([1, 2, 3])) // [ [ 1, 2, 3 ], [ 1, 2 ], [ 1, 3 ], [ 1 ], [ 2, 3 ], [ 2 ], [ 3 ], [] ]
+
+const subsets2 = (nums) => {
+  const result = []
+
+  const dfs = (startIndex, path) => {
+    result.push([...path])
+
+    for (let i = startIndex; i < nums.length; i++) {
+      path.push(nums[i])
+      dfs(i + 1, path)
+      path.pop()
+    }
+  }
+
+  dfs(0, [])
+
+  return result
+}
+console.log(subsets2([1, 2, 3]))
