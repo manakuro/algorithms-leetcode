@@ -23,11 +23,7 @@ class Solution {
 				return node
 			}
 
-			if (left != null) {
-				return left
-			}
-
-			return right
+			return left ?: right
 		}
 
 		return dfs(root)
