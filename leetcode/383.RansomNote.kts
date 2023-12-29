@@ -18,4 +18,11 @@ class Solution {
 
 		return true
 	}
+
+	fun canConstruct2(ransomNote: String, magazine: String): Boolean {
+		val ransomNoteMaps = ransomNote.groupingBy { it }.eachCount()
+		val magazineMaps = magazine.groupingBy { it }.eachCount()
+
+		return ransomNoteMaps.all { (char, count) -> magazineMaps.getOrDefault(char, 0) >= count }
+	}
 }
